@@ -2,37 +2,41 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 public class ArrayListPractice {
     public static void main(String[] args) {
 
-        List<String>myList = new ArrayList<String>();
+        List<String> myList = new ArrayList<String>();
+        List<Integer> myNums = new ArrayList<Integer>();
+        myNums.add(25);
+        myNums.add(7);
+        myNums.add(5);
+        myNums.add(16);
+        myNums.add(10);
 
-        System.out.println(myList);
-        //
         myList.add("Ant");
         myList.add("Bear");
         myList.add("Dog");
-        //
-        myList.add(2, "Cat");
-        //
-        System.out.println(myList);
-        //
-        myList.set(2, "Crab");
-        //
-        
-        System.out.println(myList);
-      /*  //
-        myList.remove(1);
-        //
-        System.out.println(myList);
-        //
-        System.out.println(myList.size());
+        myList.add("Dog");
 
-        System.out.println(myList.get(2));
-*/
+        myList.add("Cat");
+
+        myList.add("Crab");
+        System.out.println(myNums);
+        System.out.println(myList);
+        System.out.println(minToFront(myNums));
+
+        System.out.println(averageVowels(myList));
+
+        System.out.println(removeEvenLength(myList));
+        removeDuplicates(myList);
+        System.out.println(doubleList(myList));
+
     }
 
+    // + = works
+    // - = does not work
+
+    // +
     public static List<String> removeEvenLength(List<String> daList) {
 
         for (int index = 0; index < daList.size(); index++) {
@@ -44,13 +48,14 @@ public class ArrayListPractice {
         return daList;
     }
 
+    // +
     public static double averageVowels(List<String> deList) {
         double average = 0.0;
         int vowels = 0;
         for (int index = 0; index < deList.size(); index++) {
             String temps = deList.get(index);
             for (int inde = 0; inde < temps.length(); inde++) {
-                if (temps.charAt(index) == 'a' ||
+                if (temps.charAt(inde) == 'a' ||
                         temps.charAt(inde) == 'e' ||
                         temps.charAt(inde) == 'i' ||
                         temps.charAt(inde) == 'o' ||
@@ -68,6 +73,7 @@ public class ArrayListPractice {
         return average;
     }
 
+    // +
     public static List<String> removeDuplicates(List<String> list) {
         Collections.sort(list);
         for (int index = 0; index < list.size(); index++) {
@@ -81,17 +87,20 @@ public class ArrayListPractice {
         return list;
     }
 
+    // +
     public static List<String> doubleList(List<String> list) {
         for (int index = 0; index < list.size(); index++) {
-            list.add(index+1, list.get(index));
+            list.add(index + 1, list.get(index));
             index++;
         }
         return list;
     }
-    public static List<Integer> minToFront(List<Integer>list){
+
+    // +
+    public static List<Integer> minToFront(List<Integer> list) {
         int pos = 0;
         for (int index = 0; index < list.size(); index++) {
-            if (list.get(index)>list.get(pos)){
+            if (list.get(index) <= list.get(pos)) {
                 pos = index;
             }
         }
@@ -100,8 +109,5 @@ public class ArrayListPractice {
         return list;
 
     }
-
-
-
 
 }
